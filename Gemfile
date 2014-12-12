@@ -14,3 +14,11 @@ gem 'devise'
 gem 'haml'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'nested_form_fields'
+
+group :development do
+	gem 'quiet_assets'
+end
+
+group :production do 
+	gem 'rails_12factor'
+end
