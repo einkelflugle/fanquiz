@@ -1,0 +1,22 @@
+$white: white;
+$red: red;
+$green: green;
+$purple: #8C145E;
+
+$light-gray: lighten(black, 80%);
+$dark-gray: lighten(black, 10%);
+
+$transparent-white: rgba($white, 0.8);
+
+$primary-color: $purple;
+$primary-color-light: lighten($purple, 20%);
+$primary-color-dark: darken($purple, 5%);
+
+$link-color: $dark-gray;
+
+$alert-color: $red;
+$success-color: $green;
+$alert-color-dark: darken($alert-color, 10%);
+$success-color-dark: darken($success-color, 10%);
+$alert-color-light: rgba($alert-color, 0.4);
+$success-color-light: rgba($success-color, 0.4);

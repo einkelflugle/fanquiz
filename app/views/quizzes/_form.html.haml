@@ -1,0 +1,36 @@
+= form_for @quiz do |f|
+
+	- if @quiz.errors.any?
+		- @robot.errors.full_messages.each do |msg|
+			.message.alert
+				= msg
+				= link_to "×", "#", class: "close"
+
+	.form-group.required
+		= f.label :name
+		= f.text_field :name
+
+	.form-group
+		= f.label :description
+		= f.text_area :description
+
+	.form-group.questions-group
+		= f.nested_fields_for :questions do |ff|
+			.form-group.question
+				= ff.remove_nested_fields_link
+				= ff.label :title, "Question"
+				= ff.text_field :title
+
+				.form-group.answers-group
+					= ff.nested_fields_for :answers do |fff|
+						.form-group.answer
+							= fff.remove_nested_fields_link
+							= fff.label :title, "Answer"
+							= fff.text_field :title
+
+					= ff.add_nested_fields_link :answers
+
+		= f.add_nested_fields_link :questions
+	
+	.form-group
+		= f.submit "Submit"
