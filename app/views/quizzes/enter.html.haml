@@ -1,0 +1,11 @@
+%p You are entering:
+%h1= @quiz.name
+
+= form_tag(controller: :quizzes, action: :submit_entry, method: :post) do
+	%ol
+		- @quiz.questions.each_with_index do |question, index|
+			%li= question.title
+			- question.answers.each do |answer|
+				= radio_button_tag "questions[#{index}][answer]", answer.id
+				= label_tag "questions[#{index}]_answer_#{answer.id}", answer.title
+	= button_tag "Submit"

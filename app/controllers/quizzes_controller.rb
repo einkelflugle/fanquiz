@@ -45,9 +45,21 @@ class QuizzesController < ApplicationController
 		end
 	end
 
+	def enter
 		@quiz = Quiz.find(params[:id])
+	end
 
-		
+	def submit_entry
+		@quiz = Quiz.find(params[:id])
+		score = 0
+		@quiz.questions.each_with_index do |question, index|
+			chosen_answer_id = params[:questions][index.to_s][:answer]
+			if chosen_answer_id.to_i == question.correct_answer.id
+				score += 1
+			end
+		end
+		flash[:notice] = "You got #{score} out of #{@quiz.questions.count} correct!"
+		redirect_to @quiz
 	end
 
 	private
