@@ -1,7 +1,7 @@
 = form_for @quiz do |f|
 
 	- if @quiz.errors.any?
-		- @robot.errors.full_messages.each do |msg|
+		- @quiz.errors.full_messages.each do |msg|
 			.message.alert
 				= msg
 				= link_to "×", "#", class: "close"
@@ -33,4 +33,5 @@
 		= f.add_nested_fields_link :questions
 	
 	.form-group
-		= f.submit "Submit"
+		= button_tag "Submit", class: "button primary"
+		= link_to "Cancel", @quiz, class: "button"

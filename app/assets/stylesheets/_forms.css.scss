@@ -1,7 +1,9 @@
 .form-group {
 	margin: 10px 0;
-	&.required:after {
-		content: "*";
-		color: red;
-	}
+}
+label {
+	color: $mid-gray;
+}
+input {
+	margin: 0 0 10px 0;
 }

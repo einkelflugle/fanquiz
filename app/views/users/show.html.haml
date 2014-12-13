@@ -1,2 +1,3 @@
 %p= @user.email
-%a.button= link_to "Edit profile", edit_user_registration_path
+- if current_user == @user
+	= link_to "Edit profile", edit_user_registration_path, class: "button"

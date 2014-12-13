@@ -11,13 +11,21 @@
 			height: 20px;
 			text-decoration: none;
 			color: $transparent-white;
+			border: none;
+			line-height: 1;
 			padding: 15px;
 			display: block;
 			float: left;
-			&:hover {
+			&:hover, &:focus {
 				color: $white;
 				background-color: $primary-color-dark;
 			}
+			&:focus {
+				outline: none;
+			}
 		}
 	}
+}
+.nav-right {
+	float: right;
 }

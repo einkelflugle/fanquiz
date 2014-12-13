@@ -1,12 +1,27 @@
 .button {
-	background-color: $primary-color;
-	padding: 10px;
-	border-radius: 10px;
+	padding: 5px 10px;
 	display: inline-block;
 	margin: 5px 0;
-	color: $white;
+	color: $black;
+	background-color: $light-gray;
 	text-decoration: none;
-	&:hover {
-		background-color: $primary-color-dark;
+	border: none;
+	border-radius: 4px;
+	&.primary {
+		background-color: $primary-color;
+		color: $white;
+		&:hover, &:focus {
+			background-color: $primary-color-dark;
+			color: white;
+		}
+	}
+	&:hover, &:focus {
+		background-color: $primary-color-light;
+		border: initial;
+		color: initial;
+	}
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 10px $primary-color;
 	}
 }

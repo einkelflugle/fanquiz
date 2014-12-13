@@ -1,9 +1,23 @@
 body {
-	font-family: Helvetica, sans-serif;
+	font-family: Montserrat, Helvetica, Helvetica Neue, Arial, sans-serif;
+	color: $dark-gray;
 }
 h1 {
 	margin: 20px 0;
 }
+h1, h2, h3, h4, h5, h6 {
+	letter-spacing: -1px;
+}
 a {
 	color: $link-color;
+	color: $primary-color;
+	text-decoration: none;
+	border-bottom: 1px solid $primary-color;
+	&:hover, &:focus {
+		color: $primary-color-dark;
+		border-bottom: 1px solid $primary-color-dark;
+	}
+}
+p, a, label, button {
+	line-height: 1.5;
 }

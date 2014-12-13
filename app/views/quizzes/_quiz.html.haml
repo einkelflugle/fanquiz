@@ -1,0 +1,9 @@
+%h3= quiz.name
+by
+= link_to quiz.user.email, quiz.user
+
+%ol
+	- quiz.questions.each do |q|
+		%li= q.title
+
+= link_to "Edit Quiz", edit_quiz_path(quiz), class: "button"

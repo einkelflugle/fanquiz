@@ -1,20 +1,24 @@
 $white: white;
+$black: black;
 $red: red;
 $green: green;
 $purple: #8C145E;
 
 $light-gray: lighten(black, 80%);
-$dark-gray: lighten(black, 10%);
+$mid-gray: lighten(black, 50%);
+$dark-gray: lighten(black, 20%);
 
+$transparent-black: rgba($black, 0.25);
 $transparent-white: rgba($white, 0.8);
 
 $primary-color: $purple;
-$primary-color-light: lighten($purple, 20%);
+$primary-color-light: rgba($purple, 0.5);
 $primary-color-dark: darken($purple, 5%);
 
 $link-color: $dark-gray;
+$text-color: $black;
 
-$alert-color: $red;
+$alert-color: #FF5959;
 $success-color: $green;
 $alert-color-dark: darken($alert-color, 10%);
 $success-color-dark: darken($success-color, 10%);

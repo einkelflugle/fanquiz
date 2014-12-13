@@ -1,4 +1,13 @@
 class QuizzesController < ApplicationController
+	include QuizzesHelper
+
+	before_action :belongs_to_user, only: [:edit, :update, :destroy]
+	before_action :authenticate_user!, except: [:index, :show]
+
+	def index
+		@quizzes = Quiz.all
+	end
+
 	def new
 		@quiz = Quiz.new
 		3.times do
@@ -8,7 +17,7 @@ class QuizzesController < ApplicationController
 	end
 
 	def create
-		@quiz = Quiz.create(quiz_params)
+		@quiz = current_user.quizzes.build(quiz_params)
 		if @quiz.save
 			redirect_to @quiz
 		else
@@ -36,12 +45,9 @@ class QuizzesController < ApplicationController
 		end
 	end
 
-	def add_question
 		@quiz = Quiz.find(params[:id])
 
-		respond_to do |format|
-			format.js {}
-		end
+		
 	end
 
 	private

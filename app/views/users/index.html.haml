@@ -1,3 +1,6 @@
-%h1= "Displaying all users"
+%h1 Users:
 = render @users
+%hr
+%h1 Quizzes:
+= render @quizzes
 = link_to "Create quiz", new_quiz_path, class: "button"
