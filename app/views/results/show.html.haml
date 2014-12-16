@@ -1,0 +1,10 @@
+%h1= "Well done #{@result.user.name}!"
+%p= "#{@result.score} out of #{@result.quiz.questions.count} questions correct"
+%p<
+	In quiz:&nbsp;
+	= link_to @result.quiz.name, @result.quiz
+
+%p Share this result:
+= link_to "Facebook", "http://facebook.com"
+|
+= link_to "Twitter", "http://twitter.com"

@@ -6,5 +6,7 @@ by
 	- quiz.questions.each do |q|
 		%li= q.title
 
+%p.subtle= "#{quiz.results.count} participants"
+
 = link_to "Enter Quiz", enter_quiz_path(quiz), class: "button primary"
 = link_to "Edit Quiz", edit_quiz_path(quiz), class: "button"

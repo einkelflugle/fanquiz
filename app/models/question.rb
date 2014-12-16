@@ -6,7 +6,6 @@ class Question < ActiveRecord::Base
 	default_scope { order("id ASC") } # Questions should be in correct order
 
 	def correct_answer
-		# self.answers.where(correct: true)
-		self.answers.first # first one for now
+		self.answers.find_by(correct: true)
 	end
 end

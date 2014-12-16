@@ -51,19 +51,35 @@ class QuizzesController < ApplicationController
 
 	def submit_entry
 		@quiz = Quiz.find(params[:id])
-		score = 0
+		@result = current_user.results.build(quiz: @quiz)
+
+		incomplete_form = false
+
 		@quiz.questions.each_with_index do |question, index|
-			chosen_answer_id = params[:questions][index.to_s][:answer]
-			if chosen_answer_id.to_i == question.correct_answer.id
-				score += 1
+			if params[:questions].nil? || params[:questions][index.to_s].nil?
+				incomplete_form = true
 			end
 		end
-		flash[:notice] = "You got #{score} out of #{@quiz.questions.count} correct!"
-		redirect_to @quiz
+
+		if incomplete_form
+			redirect_to enter_quiz_path(@quiz)
+			flash[:alert] = "Please answer incomplete questions."
+		else
+			@quiz.questions.each_with_index do |question, index|
+				chosen_answer_id = params[:questions][index.to_s][:answer]
+				choice = SubmittedChoice.create(result: @result, answer: Answer.find(chosen_answer_id))
+			end
+			if @result.save
+				redirect_to @result and return
+				flash[:notice] = "You got #{@result.score} out of #{@quiz.questions.count} correct!"
+			else
+				render 'new'
+			end
+		end
 	end
 
 	private
 		def quiz_params
-			params.require(:quiz).permit(:name, :description, questions_attributes: [:id, :title, :quiz_id, :_destroy, answers_attributes: [:id, :title, :question_id, :_destroy]])
+			params.require(:quiz).permit(:name, :description, questions_attributes: [:id, :title, :quiz_id, :_destroy, answers_attributes: [:id, :title, :correct, :question_id, :_destroy]])
 		end
 end

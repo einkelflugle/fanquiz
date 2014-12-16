@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     		post 'submit_entry'
     	end
     end
+    resources :results, only: [:show]
     root to: 'quizzes#index'
 end
